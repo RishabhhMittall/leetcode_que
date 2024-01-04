@@ -24,8 +24,9 @@ public:
                     ans ++;
                 }
                 else if(count[i] > 3){
-                    count[i] -= 3;
-                    ans++;
+                    int a = count[i] % 3;
+                    count[i]/=3;
+                    ans += a;
                 }
             }
             
