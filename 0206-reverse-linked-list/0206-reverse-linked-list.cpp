@@ -8,25 +8,50 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+// class Solution {
+// public:
+//     ListNode* reverseList(ListNode* head) {
+
+//         // empty list
+//         if(head == NULL || head -> next == NULL) {
+//             return head;
+//         }
+//         ListNode* prev = NULL;
+//         ListNode* curr = head;
+
+//         while(curr != NULL) {
+//             ListNode* fwd = NULL;
+//             fwd = curr -> next;
+//             curr -> next = prev; 
+//             prev = curr;
+//             curr = fwd;
+
+//         }
+//         return prev;
+//     }
+// };
+
+// ------ Approach 2 (Recursive)-------------
+
 class Solution {
 public:
+
+    void solve(ListNode* &head,ListNode* curr,ListNode* prev){
+        if(curr == NULL) {
+            head = prev;
+            return;
+        }
+        ListNode* fwd = curr -> next;
+        solve(head,fwd,curr);
+        curr -> next = prev;
+
+    }
+
     ListNode* reverseList(ListNode* head) {
-
-        // empty list
-        if(head == NULL || head -> next == NULL) {
-            return head;
-        }
-        ListNode* prev = NULL;
         ListNode* curr = head;
+        ListNode* prev = NULL;
 
-        while(curr != NULL) {
-            ListNode* fwd = NULL;
-            fwd = curr -> next;
-            curr -> next = prev; 
-            prev = curr;
-            curr = fwd;
-
-        }
-        return prev;
+        solve(head, curr, prev);
+        return head;
     }
 };
