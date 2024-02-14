@@ -17,7 +17,7 @@ public:
             cnt++;
             temp = temp -> next;
         }
-        if(cnt % 2 == 0){
+        // if(cnt % 2 == 0){
             cnt = (cnt/2);
             ListNode* one = head;
             while(cnt != 0){
@@ -25,17 +25,17 @@ public:
                 cnt--;
             }
             return one;
-        }
-        else{
-            cnt = (cnt/2);
-            ListNode* one = head;
-            while(cnt != 0){
-                one = one -> next;
-                cnt--;
-            }
-            return one;
+        // }
+        // else{
+        //     cnt = (cnt/2);
+        //     ListNode* one = head;
+        //     while(cnt != 0){
+        //         one = one -> next;
+        //         cnt--;
+        //     }
+        //     return one;
 
-        }
+        // }
         return head;
     }
 };
