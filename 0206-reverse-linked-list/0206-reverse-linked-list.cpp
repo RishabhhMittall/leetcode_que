@@ -36,14 +36,17 @@
 class Solution {
 public:
 
+    // ListNode*
+
     void solve(ListNode* &head,ListNode* curr,ListNode* prev){
         if(curr == NULL) {
             head = prev;
             return;
         }
         ListNode* fwd = curr -> next;
-        solve(head,fwd,curr);
         curr -> next = prev;
+        solve(head,fwd,curr);
+       
 
     }
 
