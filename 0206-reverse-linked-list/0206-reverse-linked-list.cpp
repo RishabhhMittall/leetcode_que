@@ -31,30 +31,54 @@
 //     }
 // };
 
-// ------ Approach 2 (Recursive)-------------
+// // ------ Approach 2 (Recursive)-------------
 
+// class Solution {
+// public:
+
+//     // ListNode*
+
+//     void solve(ListNode* &head,ListNode* curr,ListNode* prev){
+//         if(curr == NULL) {
+//             head = prev;
+//             return;
+//         }
+//         ListNode* fwd = curr -> next;
+//         curr -> next = prev;
+//         solve(head,fwd,curr);
+       
+
+//     }
+
+//     ListNode* reverseList(ListNode* head) {
+//         ListNode* curr = head;
+//         ListNode* prev = NULL;
+
+//         solve(head, curr, prev);
+//         return head;
+//     }
+// };
+
+//------Approach 3 - recursion --------
 class Solution {
 public:
 
-    // ListNode*
-
-    void solve(ListNode* &head,ListNode* curr,ListNode* prev){
-        if(curr == NULL) {
-            head = prev;
-            return;
+    ListNode* solve(ListNode* & head) {
+        if(head == NULL || head -> next == NULL) {
+            return head;
         }
-        ListNode* fwd = curr -> next;
-        curr -> next = prev;
-        solve(head,fwd,curr);
-       
+
+        ListNode* chotahead = solve(head -> next) ;
+
+        head -> next -> next = head;
+        head -> next = NULL;
+
+        return chotahead;
 
     }
 
     ListNode* reverseList(ListNode* head) {
-        ListNode* curr = head;
-        ListNode* prev = NULL;
-
-        solve(head, curr, prev);
-        return head;
+        
+        return solve(head);
     }
 };
