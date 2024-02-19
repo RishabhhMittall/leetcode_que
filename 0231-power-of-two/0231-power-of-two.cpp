@@ -1,7 +1,7 @@
 class Solution {
 public:
 
-    bool power(float n) {
+    bool power(double n) {
         if(n == 1 ) {
             return true;
         }
