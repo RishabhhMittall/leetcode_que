@@ -21,6 +21,10 @@ public:
         if(res == true){
             for(int i=3;i<=n-2;i++){
                 res=res && check(n,i);
+                if(res == false) {
+                    return false;
+                }
+                
             }
 
         }
