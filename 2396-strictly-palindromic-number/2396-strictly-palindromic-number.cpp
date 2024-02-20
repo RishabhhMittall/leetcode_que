@@ -18,8 +18,11 @@ public:
 
     bool isStrictlyPalindromic(int n) {
         bool res=check(n,2);
-        for(int i=3;i<=n-2;i++){
-            res=res && check(n,i);
+        if(res == true){
+            for(int i=3;i<=n-2;i++){
+                res=res && check(n,i);
+            }
+
         }
         return res;
         
