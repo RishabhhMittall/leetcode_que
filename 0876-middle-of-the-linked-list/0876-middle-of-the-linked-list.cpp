@@ -41,7 +41,7 @@
 // };
 
 
-//--- approach 2 khiladi ---
+//--- approach 2  ---
 class Solution {
 public:
     ListNode* middleNode(ListNode* head) {
