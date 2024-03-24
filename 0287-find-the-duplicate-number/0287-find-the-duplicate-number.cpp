@@ -8,10 +8,10 @@ public:
         }
         for(int i = 0; i<count.size(); i++) {
             if(count[i] > 1) {
-                ans = i;
-                break;
+                return ans = i;
+                // break;
             }
         }
-        return ans;
+        return -1;
     }
 };
