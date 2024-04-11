@@ -24,10 +24,10 @@ public:
         }
         num.erase(0, str);
 
-        if(num != "0") {
-            return num;
+        if(num.empty()) {
+            return "0";
         }
 
-        return "0";
+        return num;
     }
 };
