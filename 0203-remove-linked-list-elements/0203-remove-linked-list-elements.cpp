@@ -11,18 +11,18 @@
 class Solution {
 public:
     ListNode* deleteEle(ListNode* &head, int value) {
-        if(head  == NULL) return head;
+
+        
+
+        //deleting head
+        while (head != NULL && head->val == value) {
+            ListNode* nodetodelete = head;
+            head = head->next;
+            delete nodetodelete;
+        }
 
         ListNode* curr = head;
         ListNode* prev = NULL;
-
-        //deleting head
-        while (curr != NULL && curr->val == value) {
-            ListNode* nodetodelete = curr;
-            head = curr->next;  
-            curr = curr->next;
-            delete nodetodelete;
-        }
         
         while(curr != NULL) {
             
