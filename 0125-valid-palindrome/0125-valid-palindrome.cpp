@@ -1,37 +1,40 @@
 class Solution {
 public:
 
-    char tolower(char ch) {
+    char toLower (char ch) {
         if(ch >= 'A' && ch <= 'Z') {
-            return (ch - 'A' + 'a');
+            return ch - 'A' + 'a';
         }
         return ch;
     }
 
-    bool isalphanumeric(char ch){
-        if((ch >= '0' && ch <= '9') || ch >= 'a' && ch <= 'z'){
+    bool alphaNumeric (char ch) {
+        if( ch >= '0' && ch <= '9' || ch >= 'a' && ch <= 'z') {
             return true;
         }
         return false;
     }
 
     bool isPalindrome(string s) {
-        int i = 0;
-        int j = s.length() - 1;
-        while(i<j){
-            char left = tolower(s[i]);
-            char right = tolower(s[j]);
+        int i  = 0;
+        int j = s.length() -1;
 
-            if(!isalphanumeric(left)){
+        while(i<j) {
+            char l = toLower(s[i]);
+            char r = toLower(s[j]);
+
+            if( !alphaNumeric(l)) {
                 i++;
             }
-            else if(!isalphanumeric(right)){
+            else if(!alphaNumeric(r)) {
                 j--;
             }
-            else if(left != right){
+
+            else if(l != r) {
                 return false;
+        
             }
-            else{
+            else {
                 i++;
                 j--;
             }
