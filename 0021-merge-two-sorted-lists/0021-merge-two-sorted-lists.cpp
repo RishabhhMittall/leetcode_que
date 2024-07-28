@@ -11,7 +11,7 @@
 class Solution {
 public:
     ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
-        if(list1 == nullptr) {
+        if(list1 == NULL) {
             return list2;
         }
 
@@ -19,24 +19,31 @@ public:
             return list1;
         }
 
-        ListNode* small = list1;
-        ListNode* large = list1 -> next;
-        ListNode* curr = list2;
+        ListNode* dummy = new ListNode(-1);
+        ListNode* tail = dummy;
 
-        while(curr != NULL) {
-            if(small -> val <= curr -> val && large -> val >= curr -> val) {
-                ListNode* temp = curr -> next;
-                small -> next = curr;
-                curr -> next = large;
-                small = small -> next;
-                curr = temp;
+        while(list1 != NULL && list2 != NULL) {
+            if(list1 -> val <= list2 -> val) {
+                tail -> next = list1;
+                list1 = list1 -> next;
             }
             else {
-                small = small -> next;
-                large = large -> next;
+                tail -> next = list2;
+                list2 = list2 -> next;
             }
+            tail = tail -> next;
+        } 
+
+
+        if(list1 != nullptr) {
+            tail -> next = list1;
+        }
+        else {
+            tail -> next = list2;
         }
 
-        return list1;
+        ListNode* final = dummy -> next;
+        delete dummy;
+        return final;
     }
 };
