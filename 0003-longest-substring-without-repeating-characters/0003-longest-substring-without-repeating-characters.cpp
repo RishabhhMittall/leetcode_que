@@ -1,20 +1,20 @@
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
-
         int n = s.length();
-        int maxLen = 0;
-
-        for(int i = 0; i<n; i++){
-            int arr[256] = {0};
-            for(int j = i; j<n; j++) {
-                
-                if(arr[s[j]] == 1) break;
-                int len = j - i + 1;
-                maxLen = max(maxLen , len);
-                arr[s[j]] = 1;
-            }
+        if(n == 0){
+            return 0;
         }
-        return maxLen;
+        int ans = 0;
+        int arr[128] ={-1};
+        int l = 0;
+        for(int i = 0; i<n; i++) {
+            if(arr[s[i]] >= l){
+                l = arr[s[i]] + 1;
+            }
+            arr[s[i]] = i;
+            ans = max(ans, i-l+1);
+        }
+        return ans;
     }
 };
