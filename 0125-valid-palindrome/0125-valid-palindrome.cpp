@@ -8,28 +8,27 @@ public:
         return ch;
     }
 
-    bool isAlphaNumeric(char ch) {
-        if(ch >= '0' && ch <= '9' || ch >= 'a' && ch <= 'z') {
+    bool isAlpha (char ch) {
+        if((ch >= 'a' && ch <= 'z') || (ch >= '0' && ch <='9')) {
             return true;
         }
-            return false;
+        return false;
     }
 
-
     bool isPalindrome(string s) {
-        int n = s.length();
 
         int i = 0;
-        int j = n - 1;
-        
-        while(i<j) {
+        int j= s.size() -1;
+
+
+        while( i<j ) {
             char left = toLower(s[i]);
             char right = toLower(s[j]);
 
-            if( isAlphaNumeric(left) != true) {
+            if(!isAlpha(left)) {
                 i++;
             }
-            else if( isAlphaNumeric(right) != true) {
+            else if(!isAlpha(right)) {
                 j--;
             }
             else if(left != right) {
@@ -41,5 +40,6 @@ public:
             }
         }
         return true;
+        
     }
 };
