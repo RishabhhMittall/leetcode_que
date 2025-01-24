@@ -4,20 +4,14 @@ public:
         int row = matrix.size();
         int col = matrix[0].size();
 
-        int rowidx = 0, colidx = col-1;
+        int rowIdx = 0, colIdx = col - 1;
 
-        while(rowidx<row && colidx >= 0){
-            int mid = matrix[rowidx][colidx];
+        while(rowIdx < row && colIdx < col) {
+            int ele = matrix[rowIdx][colIdx];
 
-            if(mid == target){
-                return true;
-            }
-            if(mid < target){
-                rowidx ++;
-            }
-            if(mid > target){
-                colidx --;
-            }
+            if(ele == target) return true;
+            else if(ele < target) rowIdx ++;
+            else colIdx--;
         }
         return false;
     }
