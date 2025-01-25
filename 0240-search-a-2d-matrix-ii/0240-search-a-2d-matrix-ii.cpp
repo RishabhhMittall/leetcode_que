@@ -6,7 +6,7 @@ public:
 
         int rowIdx = 0, colIdx = col - 1;
 
-        while(rowIdx < row && colIdx < col) {
+        while(rowIdx < row && colIdx >= 0) {
             int ele = matrix[rowIdx][colIdx];
 
             if(ele == target) return true;
