@@ -1,15 +1,20 @@
 class Solution {
 public:
     vector<int> numberGame(vector<int>& nums) {
-        vector<int> arr;
         int n = nums.size();
-        int mina = -1;
-        int minb = -1;
-        sort(nums.begin(),nums.end());
-        for(int i = 0; i<n-1; i+=2){
-            swap(nums[i],nums[i+1]);
+        sort(nums.begin(), nums.end());
+
+        if(n == 2) {
+            reverse(nums.begin(), nums.end());
+
         }
-        arr = nums;
-        return arr;
+        else {
+            reverse(nums.begin(), nums.begin() + n/2);
+            reverse(nums.begin() + n/2, nums.end());
+
+        }
+
+        
+        return nums;
     }
 };
