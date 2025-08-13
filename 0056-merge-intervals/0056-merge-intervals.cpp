@@ -1,19 +1,27 @@
 class Solution {
 public:
-    vector<vector<int>> merge(vector<vector<int>>& intervals) {
+    vector<vector<int>> merge(vector<vector<int>>& i) {
+
+        int n = i.size();
+        sort(i.begin(), i.end());
+        
         vector<vector<int>> ans;
-        sort(intervals.begin(), intervals.end());
+        ans.push_back(i[0]);
 
-        ans.push_back(intervals[0]);
+        int j;
+        for(j = 1; j<n; j++) {
+            vector<int> temp = ans.back();
+            ans.pop_back();
 
-        for (int i = 1; i < intervals.size(); ++i) {
-            vector<int>& last = ans.back();                   //ans.back() returns last element in the interval
-            if (intervals[i][0] <= last[1]) {
-                last[1] = max(last[1], intervals[i][1]);
-                //  ans.back() = last;                     // for passing without refrence 
-            } else {
-                ans.push_back(intervals[i]);
+            if(temp[1] >= i[j][0]) {
+                temp[1] = i[j][1];
+                ans.push_back(temp);
             }
+            else {
+                ans.push_back(temp);
+                ans.push_back(i[j]);
+            }
+
         }
 
         return ans;
