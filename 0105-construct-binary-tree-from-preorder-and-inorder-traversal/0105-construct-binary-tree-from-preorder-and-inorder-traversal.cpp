@@ -22,7 +22,7 @@ public:
         return -1;
     }
 
-    TreeNode* solve(vector<int> in, vector<int> pre ,int &preIdx,  int inStart, int inEnd ,int n) {
+    TreeNode* solve(vector<int> &in, vector<int>& pre ,int &preIdx,  int inStart, int inEnd ,int n, map<int, int>& mp) {
 
         if(preIdx >= n || inStart > inEnd) {
             return NULL; 
@@ -30,10 +30,11 @@ public:
 
         int ele = pre[preIdx++];
         TreeNode* root = new TreeNode(ele);
-        int posi = findPosi(in , ele, n);
+        // int posi = findPosi(in , ele, n);
+        int posi = mp[ele];
 
-        root -> left = solve(in, pre, preIdx, inStart, posi - 1, n);
-        root -> right = solve(in, pre, preIdx, posi + 1, inEnd, n);
+        root -> left = solve(in, pre, preIdx, inStart, posi - 1, n, mp);
+        root -> right = solve(in, pre, preIdx, posi + 1, inEnd, n, mp);
         
         return root;
     }
@@ -43,7 +44,14 @@ public:
         int preIdx = 0;
         int n = in.size();
 
-        TreeNode* root = solve(in, pre, preIdx, 0, n-1, n);
+        // node -> idx mapping
+        map<int, int> mp;
+        for(int i = 0; i<n; i++) {
+            mp[in[i]] = i;
+        }
+
+
+        TreeNode* root = solve(in, pre, preIdx, 0, n-1, n, mp);
         return root;
         
     }
