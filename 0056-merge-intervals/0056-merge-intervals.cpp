@@ -13,7 +13,10 @@ public:
             vector<int> temp = ans.back();
             ans.pop_back();
 
-            if(temp[1] >= i[j][0]) {
+            if(temp[1] > i[j][1]) {
+                ans.push_back(temp);
+            }
+            else if(temp[1] >= i[j][0]) {
                 temp[1] = i[j][1];
                 ans.push_back(temp);
             }
